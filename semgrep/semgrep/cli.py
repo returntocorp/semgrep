@@ -78,6 +78,13 @@ def cli() -> None:
         type=argparse.FileType("x"),
         help=f"Generate starter configuration file. Defaults to {DEFAULT_CONFIG_FILE}.",
     )
+
+    config.add_argument(
+        "--watch",
+        action="store_true",
+        help="Watch a remote --config and re-run Semgrep when it changes.",
+    )
+
     config.add_argument(
         "-l",
         "--lang",
@@ -492,4 +499,5 @@ def cli() -> None:
                 severity=args.severity,
                 report_time=args.json_time,
                 experimental=args.experimental,
+                watch=args.watch,
             )
